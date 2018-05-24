@@ -1,7 +1,8 @@
 Backlog
 
+* Show goals
+* Show level of achievement towards goal
 * Editerbar eventlog
-* Opret Mål
 * Deling på tværs af telefoner (m. server)
 * Avatarer
 * Experience-points
