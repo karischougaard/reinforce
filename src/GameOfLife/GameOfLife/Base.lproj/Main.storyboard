@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Opgaver-->
+        <!--Mål og opgaver-->
         <scene sceneID="CGB-cx-2tp">
             <objects>
                 <tableViewController id="DfT-Zb-9Ia" customClass="ChoreTableViewController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,7 +60,7 @@
                             <outlet property="delegate" destination="DfT-Zb-9Ia" id="Cee-FJ-Veh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Opgaver" id="W08-zy-bvu">
+                    <navigationItem key="navigationItem" title="Mål og opgaver" id="W08-zy-bvu">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="UMh-zy-aV7">
                                 <connections>

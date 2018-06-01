@@ -13,6 +13,7 @@ class ChoreTableViewController: UITableViewController {
     
     //Mark: Properties
     var choreData : ChoreDataController = ChoreDataController.instance
+    var goalData : GoalDataController = GoalDataController.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,41 @@ class ChoreTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Mål"
+        } else if section == 1 {
+            return "Aktiviteter"
+        }
+        fatalError("The section of ChoreTableView is unknown.")
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let header = UITableViewHeaderFooterView()
+        header.backgroundColor = UIColor.blue
+        
+        if section == 0 {
+            header.setValue("Mål", forKey: "text")
+        } else if section == 1 {
+            header.setValue("Aktiviteter", forKey: "text")
+        } else {
+            fatalError("The section of ChoreTableView is unknown.")
+        }
+        return header
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return choreData.count()
+        if section == 0 {
+            return goalData.count()
+        } else {
+            return choreData.count()
+        }
     }
+        
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ChoreTableViewCell"
@@ -44,13 +74,25 @@ class ChoreTableViewController: UITableViewController {
                 fatalError("The dequeued cell is not an instance of ChoreTableViewCell.")
         }
 
-        // Fetches the appropriate chore for the data source layout.
-        let chore = choreData.get(index : indexPath.row)
+        // Fetches the appropriate goal or chore for the data source layout.
+        let section = TableSection(rawValue: indexPath.section)
+        if section == TableSection.goals {
+            let goal = goalData.get(index: indexPath.row)
+            
+            cell.nameLabel.text = goal.name
+            cell.photoImageView.image = goal.photo
+            cell.countLabel.text = String(goal.currentPoints)
+            
+            return cell
+        } else if section == TableSection.chores {
+            let chore = choreData.get(index : indexPath.row)
 
-        cell.nameLabel.text = chore.name
-        cell.photoImageView.image = chore.photo
-        cell.countLabel.text = String(chore.count)
-        return cell
+            cell.nameLabel.text = chore.name
+            cell.photoImageView.image = chore.photo
+            cell.countLabel.text = String(chore.count)
+            return cell
+        }
+        fatalError("The cell is in an unknown section of ChoreTableView.")
     }
 
     
@@ -95,6 +137,10 @@ class ChoreTableViewController: UITableViewController {
             choreData.countUp(index : indexPath.row);
             tableView.reloadRows(at: [indexPath], with: .none)
         }
+    }
+    
+    enum TableSection: Int {
+        case goals = 0, chores, total
     }
     
     /*

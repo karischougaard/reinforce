@@ -1,6 +1,5 @@
 Backlog
 
-* Show goals
 * Show level of achievement towards goal
 * Editerbar eventlog
 * Deling på tværs af telefoner (m. server)

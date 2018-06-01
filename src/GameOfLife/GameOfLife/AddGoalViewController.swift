@@ -64,7 +64,7 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         let choreNames = [selectedChoreName ?? ""]
         
         // Set the goal to be passed to ChoreTableViewController after the unwind segue.
-        guard let goal : Goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, pointGivingChoresArray: choreNames) else {
+        guard let goal : Goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: 0, pointGivingChoresArray: choreNames) else {
             os_log("Error creating goal", log: OSLog.default, type: .debug)
             return
         }
