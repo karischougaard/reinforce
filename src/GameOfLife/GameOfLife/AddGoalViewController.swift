@@ -17,6 +17,12 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    /*
+     This value is either passed by `ChoreTableViewController` in `prepare(for:sender:)`
+     or constructed as part of adding a new goal.
+     */
+    var goal: Goal?
+
     var choreData : ChoreDataController = ChoreDataController.instance
     var goalData : GoalDataController = GoalDataController.instance
     
@@ -25,11 +31,23 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Handle the text field’s user input through delegate callbacks.
         self.activityPicker.delegate = self
         self.activityPicker.dataSource = self
         // Do any additional setup after loading the view.
-    }
 
+        // Set up views if editing an existing Goal.
+        if let goal = goal {
+            navigationItem.title = goal.name
+            goalName.text = goal.name
+            pointsToAchieveGoal.text = String(goal.pointsToAchieveGoal)
+            goalImageSelector.image = goal.photo
+        }
+        
+        // Enable the Save button only if the text field has a valid Chore name.
+        updateSaveButtonState()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,10 +87,28 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
             return
         }
         
-        self.goalData.add(goal: goal)
+        self.goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: 0, pointGivingChoresArray: choreNames)
+
+    }
+    
+    //MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
 
-    
     //MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -131,6 +167,12 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     
     //MARK: Actions
     
-    
+    //MARK: Private Methods
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = goalName.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+        saveButton.isEnabled = true
+    }
 
 }

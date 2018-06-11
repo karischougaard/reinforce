@@ -118,20 +118,35 @@ class ChoreTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            choreData.delete(index: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let section = TableSection(rawValue: indexPath.section)
+            if section == TableSection.goals {
+                goalData.delete(index: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else if section == TableSection.chores {
+                choreData.delete(index: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                fatalError("The cell is in an unknown section of ChoreTableView.")
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Find the selected cell in the usual way
         let cell = tableView.cellForRow(at: indexPath)
         
         if ( tableView.isEditing) {
-            // perform segue to edit
-            self.performSegue(withIdentifier: "ShowDetail", sender:cell);
+            let section = TableSection(rawValue: indexPath.section)
+            if section == TableSection.goals {
+                self.performSegue(withIdentifier: "ShowGoalDetail", sender:cell);
+            } else if section == TableSection.chores {
+                // perform segue to edit
+                self.performSegue(withIdentifier: "ShowChoreDetail", sender:cell);
+            } else {
+                fatalError("The cell is in an unknown section of ChoreTableView.")
+            }
+
         } else {
             // when not in edit mode count up
             choreData.countUp(index : indexPath.row);
@@ -163,6 +178,7 @@ class ChoreTableViewController: UITableViewController {
     // MARK: Actions
      
     @IBAction func unwindToChoreList(sender: UIStoryboardSegue) {
+        
         if let sourceViewController = sender.source as? ChoreViewController, let chore = sourceViewController.chore {
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -172,8 +188,20 @@ class ChoreTableViewController: UITableViewController {
             } else {
                 // Add a new chore.
                 choreData.add(chore : chore)
-                let newIndexPath = IndexPath(row: choreData.count(), section: 0)
-                
+                let newIndexPath = IndexPath(row: choreData.count()-1, section: 1)
+
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        } else if let sourceViewController = sender.source as? AddGoalViewController, let goal = sourceViewController.goal {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing goal.
+                goalData.set(index: selectedIndexPath.row, goal : goal)
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                // Add a new goal.
+                goalData.add(goal : goal)
+                let newIndexPath = IndexPath(row: goalData.count()-1, section: 0)
+
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
@@ -190,7 +218,10 @@ class ChoreTableViewController: UITableViewController {
         case "AddChore":
                 os_log("Adding a new chore.", log: OSLog.default, type: .debug)
             
-        case "ShowDetail":
+        case "AddGoal":
+            os_log("Adding a new goal.", log: OSLog.default, type: .debug)
+            
+        case "ShowChoreDetail":
             guard let choreDetailViewController = segue.destination as? ChoreViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -202,12 +233,25 @@ class ChoreTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPath(for: selectedChoreCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
-            
+
             let selectedChore = choreData.get(index : indexPath.row)
             choreDetailViewController.chore = selectedChore
+
+        case "ShowGoalDetail":
+            guard let addGoalDetailViewController = segue.destination as? AddGoalViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
             
-        case "AddGoal":
-            os_log("Adding a new goal.", log: OSLog.default, type: .debug)
+            guard let selectedCell = sender as? ChoreTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedGoal = goalData.get(index: indexPath.row)
+            addGoalDetailViewController.goal = selectedGoal
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
