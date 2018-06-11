@@ -52,6 +52,7 @@
                                     <outlet property="countLabel" destination="pUD-uW-qXp" id="GDP-na-6hs"/>
                                     <outlet property="nameLabel" destination="Dwh-sT-Iqo" id="c5B-mb-wlk"/>
                                     <outlet property="photoImageView" destination="F1U-s0-1Gs" id="hlm-uu-0oy"/>
+                                    <segue destination="nQe-dh-Vil" kind="show" identifier="ShowGoalDetail" id="5SJ-Mz-FKW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -345,6 +346,7 @@
         <image name="goal_small" width="12" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xLr-dV-BH1"/>
+        <segue reference="5SJ-Mz-FKW"/>
+        <segue reference="VaX-U4-FFw"/>
     </inferredMetricsTieBreakers>
 </document>
