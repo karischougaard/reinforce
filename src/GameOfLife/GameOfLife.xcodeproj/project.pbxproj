@@ -13,7 +13,7 @@
 		6054C0351F433B89005FB9A9 /* ChoreHistoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6054C0341F433B89005FB9A9 /* ChoreHistoryItemTableViewCell.swift */; };
 		60590C001EA0B5FA00EDC008 /* ChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60590BFF1EA0B5FA00EDC008 /* ChoreTableViewCell.swift */; };
 		60590C021EA1682400EDC008 /* ChoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60590C011EA1682400EDC008 /* ChoreTableViewController.swift */; };
-		606AD1131F438EF200F09539 /* AddGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606AD1121F438EF200F09539 /* AddGoalViewController.swift */; };
+		606AD1131F438EF200F09539 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606AD1121F438EF200F09539 /* GoalViewController.swift */; };
 		6076533F1F443FDD0010454C /* ChoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076533E1F443FDD0010454C /* ChoreDataController.swift */; };
 		60FFDE931E965123004D2BF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFDE921E965123004D2BF8 /* AppDelegate.swift */; };
 		60FFDE951E965123004D2BF8 /* ChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFDE941E965123004D2BF8 /* ChoreViewController.swift */; };
@@ -40,7 +40,7 @@
 		6054C0341F433B89005FB9A9 /* ChoreHistoryItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreHistoryItemTableViewCell.swift; sourceTree = "<group>"; };
 		60590BFF1EA0B5FA00EDC008 /* ChoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreTableViewCell.swift; sourceTree = "<group>"; };
 		60590C011EA1682400EDC008 /* ChoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreTableViewController.swift; sourceTree = "<group>"; };
-		606AD1121F438EF200F09539 /* AddGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalViewController.swift; sourceTree = "<group>"; };
+		606AD1121F438EF200F09539 /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		6076533E1F443FDD0010454C /* ChoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreDataController.swift; sourceTree = "<group>"; };
 		60FFDE8F1E965123004D2BF8 /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60FFDE921E965123004D2BF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 				6054C0341F433B89005FB9A9 /* ChoreHistoryItemTableViewCell.swift */,
 				60FFDE921E965123004D2BF8 /* AppDelegate.swift */,
 				60FFDE941E965123004D2BF8 /* ChoreViewController.swift */,
-				606AD1121F438EF200F09539 /* AddGoalViewController.swift */,
+				606AD1121F438EF200F09539 /* GoalViewController.swift */,
 				604E24DA1F446A93009FC06D /* GoalDataController.swift */,
 				60FFDE961E965123004D2BF8 /* Main.storyboard */,
 				60FFDE991E965123004D2BF8 /* Assets.xcassets */,
@@ -223,7 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606AD1131F438EF200F09539 /* AddGoalViewController.swift in Sources */,
+				606AD1131F438EF200F09539 /* GoalViewController.swift in Sources */,
 				60FFDE951E965123004D2BF8 /* ChoreViewController.swift in Sources */,
 				60FFDE931E965123004D2BF8 /* AppDelegate.swift in Sources */,
 				604E24DB1F446A93009FC06D /* GoalDataController.swift in Sources */,

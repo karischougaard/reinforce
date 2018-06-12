@@ -14,7 +14,7 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var activityPicker: UIPickerView!
     @IBOutlet weak var goalImageSelector: UIImageView!
     @IBOutlet weak var pointsToAchieveGoal: UITextField!
-
+    @IBOutlet weak var currentPoints: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     /*
@@ -41,6 +41,7 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
             navigationItem.title = goal.name
             goalName.text = goal.name
             pointsToAchieveGoal.text = String(goal.pointsToAchieveGoal)
+            currentPoints.text = String(goal.currentPoints)
             goalImageSelector.image = goal.photo
         }
         
