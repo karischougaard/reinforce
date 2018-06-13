@@ -148,9 +148,16 @@ class ChoreTableViewController: UITableViewController {
             }
 
         } else {
-            // when not in edit mode count up
-            choreData.countUp(index : indexPath.row);
-            tableView.reloadRows(at: [indexPath], with: .none)
+            let section = TableSection(rawValue: indexPath.section)
+            if section == TableSection.goals {
+                // do nothing
+            } else if section == TableSection.chores {
+                // when not in edit mode count up
+                choreData.countUp(index : indexPath.row);
+                tableView.reloadRows(at: [indexPath], with: .none)
+            } else {
+                fatalError("The cell is in an unknown section of ChoreTableView.")
+            }
         }
     }
     
@@ -192,7 +199,7 @@ class ChoreTableViewController: UITableViewController {
 
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
-        } else if let sourceViewController = sender.source as? AddGoalViewController, let goal = sourceViewController.goal {
+        } else if let sourceViewController = sender.source as? GoalViewController, let goal = sourceViewController.goal {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing goal.
                 goalData.set(index: selectedIndexPath.row, goal : goal)
@@ -238,7 +245,7 @@ class ChoreTableViewController: UITableViewController {
             choreDetailViewController.chore = selectedChore
 
         case "ShowGoalDetail":
-            guard let addGoalDetailViewController = segue.destination as? AddGoalViewController else {
+            guard let addGoalDetailViewController = segue.destination as? GoalViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             

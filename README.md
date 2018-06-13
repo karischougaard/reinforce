@@ -1,5 +1,6 @@
 Backlog
 
+* Handle when a now goal or activity use the same name as an existing
 * Show level of achievement towards goal
 * Editerbar eventlog
 * Deling på tværs af telefoner (m. server)

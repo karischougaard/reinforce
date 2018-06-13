@@ -52,7 +52,6 @@
                                     <outlet property="countLabel" destination="pUD-uW-qXp" id="GDP-na-6hs"/>
                                     <outlet property="nameLabel" destination="Dwh-sT-Iqo" id="c5B-mb-wlk"/>
                                     <outlet property="photoImageView" destination="F1U-s0-1Gs" id="hlm-uu-0oy"/>
-                                    <segue destination="nQe-dh-Vil" kind="show" identifier="ShowGoalDetail" id="5SJ-Mz-FKW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -77,11 +76,12 @@
                     </navigationItem>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ShowChoreDetail" id="VaX-U4-FFw"/>
+                        <segue destination="nQe-dh-Vil" kind="show" identifier="ShowGoalDetail" id="i2B-Er-2jb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUA-RD-9nb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7.2000000000000002" y="115.59220389805098"/>
+            <point key="canvasLocation" x="-9" y="-178"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="2oC-DH-Xjx">
@@ -126,7 +126,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqM-0z-ZEw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="981.60000000000002" y="-288.30584707646182"/>
+            <point key="canvasLocation" x="663" y="-481"/>
         </scene>
         <!--Ny opgave-->
         <scene sceneID="tne-QT-ifu">
@@ -207,7 +207,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2409" y="116"/>
+            <point key="canvasLocation" x="2188" y="-85"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bSx-qD-0Ui">
@@ -243,12 +243,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jl-vK-a0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1598" y="469"/>
+            <point key="canvasLocation" x="1455" y="409"/>
         </scene>
         <!--Nyt mål-->
         <scene sceneID="0tm-So-yVR">
             <objects>
-                <viewController id="nQe-dh-Vil" customClass="AddGoalViewController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nQe-dh-Vil" customClass="GoalViewController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BvN-rF-2j3"/>
                         <viewControllerLayoutGuide type="bottom" id="h1M-Zp-lxw"/>
@@ -326,7 +326,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Nyt mål" id="d1e-Ym-vhp">
-                        <barButtonItem key="leftBarButtonItem" title="Fortryd" id="VXQ-XM-YOa"/>
+                        <barButtonItem key="leftBarButtonItem" title="Fortryd" id="VXQ-XM-YOa">
+                            <connections>
+                                <action selector="cancel:" destination="nQe-dh-Vil" id="P8e-gT-ffb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Gem" id="1Xt-3f-N8g">
                             <connections>
                                 <segue destination="vhm-OW-12H" kind="unwind" unwindAction="unwindToChoreListWithSender:" id="bVK-o6-gb0"/>
@@ -338,7 +342,7 @@
                         <outlet property="activityPicker" destination="DoW-qo-HQz" id="G97-Qb-lRI"/>
                         <outlet property="currentPoints" destination="73k-nH-fUI" id="QmH-ef-fFl"/>
                         <outlet property="goalImageSelector" destination="V6X-77-YY0" id="8Vt-hi-Xuk"/>
-                        <outlet property="goalName" destination="MEB-HZ-56o" id="teD-m4-mg0"/>
+                        <outlet property="goalName" destination="MEB-HZ-56o" id="Cx8-hY-2AG"/>
                         <outlet property="pointsToAchieveGoal" destination="pgP-OK-ZZz" id="Dup-jL-DiJ"/>
                         <outlet property="saveButton" destination="1Xt-3f-N8g" id="4GX-4T-9KT"/>
                     </connections>
@@ -351,7 +355,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="702" y="928"/>
+            <point key="canvasLocation" x="758" y="928"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aIr-LB-lsu">
@@ -377,7 +381,7 @@
         <image name="goal_small" width="12" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5SJ-Mz-FKW"/>
+        <segue reference="i2B-Er-2jb"/>
         <segue reference="VaX-U4-FFw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,5 +1,5 @@
 //
-//  AddGoalViewController.swift
+//  GoalViewController.swift
 //  GameOfLife
 //
 //  Created by Kari Rye Schougaard on 15/08/2017.
@@ -9,14 +9,15 @@
 import UIKit
 import os.log
 
-class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     @IBOutlet weak var goalName: UITextField!
     @IBOutlet weak var activityPicker: UIPickerView!
     @IBOutlet weak var goalImageSelector: UIImageView!
     @IBOutlet weak var pointsToAchieveGoal: UITextField!
     @IBOutlet weak var currentPoints: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
+ 
     /*
      This value is either passed by `ChoreTableViewController` in `prepare(for:sender:)`
      or constructed as part of adding a new goal.
@@ -32,6 +33,8 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         super.viewDidLoad()
 
         // Handle the text field’s user input through delegate callbacks.
+        self.goalName.delegate = self
+        
         self.activityPicker.delegate = self
         self.activityPicker.dataSource = self
         // Do any additional setup after loading the view.
@@ -45,7 +48,7 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
             goalImageSelector.image = goal.photo
         }
         
-        // Enable the Save button only if the text field has a valid Chore name.
+        // Enable the Save button only if the text field has a valid Goal name.
         updateSaveButtonState()
     }
     
@@ -64,6 +67,9 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,19 +83,19 @@ class AddGoalViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         
         let name = goalName.text ?? ""
         let photo = goalImageSelector.image
-        let pointsToAchieveGoal: Int = Int(self.pointsToAchieveGoal.text ?? "") ?? 0
-        
-        //FIXME virker kun når man selv har valgt en aktivitet 
+        let pointsToAchieveGoal: Int = Int(self.pointsToAchieveGoal.text ?? "") ?? 100
+        let currentPoints: Int = Int(self.currentPoints.text ?? "") ?? 0
+
+        //FIXME virker kun når man selv har valgt en aktivitet
         let choreNames = [selectedChoreName ?? ""]
         
         // Set the goal to be passed to ChoreTableViewController after the unwind segue.
-        guard let goal : Goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: 0, pointGivingChoresArray: choreNames) else {
+        guard let goal : Goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: currentPoints, pointGivingChoresArray: choreNames) else {
             os_log("Error creating goal", log: OSLog.default, type: .debug)
             return
         }
         
-        self.goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: 0, pointGivingChoresArray: choreNames)
-
+        self.goal = goal
     }
     
     //MARK: UITextFieldDelegate
