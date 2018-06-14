@@ -1,7 +1,10 @@
 Backlog
 
+* Show currently allowed activity, when a goal is edited
+* Handle more than one allowed activity for at goal
 * Handle when a now goal or activity use the same name as an existing
 * Show level of achievement towards goal
+* Make some kind of celebration, when a goal has been reached
 * Editerbar eventlog
 * Deling på tværs af telefoner (m. server)
 * Avatarer

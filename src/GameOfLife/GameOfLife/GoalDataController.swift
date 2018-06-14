@@ -27,6 +27,14 @@ class GoalDataController {
         return goals[index]
     }
     
+    public func countUp(name: String){
+        for goal in goals {
+            if goal.pointGivingChoresArray.contains(name) {
+                goal.currentPoints = goal.currentPoints + 1
+            }
+        }
+    }
+    
     public func delete(index : Int) {
         // Delete the row from the data source
         goals.remove(at: index)

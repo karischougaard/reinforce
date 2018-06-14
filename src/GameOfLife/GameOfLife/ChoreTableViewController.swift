@@ -153,8 +153,7 @@ class ChoreTableViewController: UITableViewController {
                 // do nothing
             } else if section == TableSection.chores {
                 // when not in edit mode count up
-                choreData.countUp(index : indexPath.row);
-                tableView.reloadRows(at: [indexPath], with: .none)
+                self.countUp(indexPath: indexPath)
             } else {
                 fatalError("The cell is in an unknown section of ChoreTableView.")
             }
@@ -267,5 +266,12 @@ class ChoreTableViewController: UITableViewController {
     
     
     //MARK: Private Methods
+    
+    func countUp(indexPath: IndexPath){
+        choreData.countUp(index: indexPath.row);
+        goalData.countUp(name: choreData.get(index: indexPath.row).name);
+        tableView.reloadSections(IndexSet(integersIn: 0...0), with: .none)
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
 
 }
