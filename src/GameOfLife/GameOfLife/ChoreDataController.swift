@@ -99,7 +99,12 @@ class ChoreDataController {
         }
         chores.append(eat)
         
-        chores.append(Chore(name: "Rasmus: møde i skole inden 9", photo: UIImage(named: "nineOClock"), count: 0)!)
+        guard let meet = Chore(name: "Rasmus: møde i skole inden 9", photo: UIImage(named: "nineOClock"), count: 0) else {
+            fatalError("Unable to instantiate Rasmus: møde i skole inden 9")
+        }
+        chores.append(meet)
+
+        /*
         chores.append(Chore(name: "Eva Marie: rede hår", photo: nil, count: 0)!)
         chores.append(Chore(name: "Eva Marie: Få redt uglet hår (med skærm)", photo: nil, count: 0)!)
         chores.append(Chore(name: "Selv gå i bad", photo: nil, count: 0)!)
@@ -131,7 +136,7 @@ class ChoreDataController {
         chores.append(Chore(name: "Aflevere biblioteksbøger", photo: nil, count: 0)!)
         chores.append(Chore(name: "Bonus point for god gerning", photo: nil, count: 0)!)
         chores.append(Chore(name: "Bonus point for at gøre noget særligt godt", photo: nil, count: 0)!)
-        
+        */
     }
     
     private func saveChores() {

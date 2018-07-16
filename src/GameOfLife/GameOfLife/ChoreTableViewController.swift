@@ -81,7 +81,7 @@ class ChoreTableViewController: UITableViewController {
             
             cell.nameLabel.text = goal.name
             cell.photoImageView.image = goal.photo
-            cell.countLabel.text = String(goal.currentPoints)
+            cell.countLabel.text = "\(goal.currentPoints) / \(goal.pointsToAchieveGoal)"
             
             return cell
         } else if section == TableSection.chores {
