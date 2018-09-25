@@ -9,15 +9,16 @@
 import UIKit
 import os.log
 
-class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var goalName: UITextField!
-    @IBOutlet weak var activityPicker: UIPickerView!
     @IBOutlet weak var goalImageSelector: UIImageView!
     @IBOutlet weak var pointsToAchieveGoal: UITextField!
     @IBOutlet weak var currentPoints: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
- 
+    @IBOutlet weak var allChoresCountSwitch: UISwitch!
+    @IBOutlet weak var choresForGoalTableView: UITableView!
+
     /*
      This value is either passed by `ChoreTableViewController` in `prepare(for:sender:)`
      or constructed as part of adding a new goal.
@@ -26,25 +27,46 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
 
     var choreData : ChoreDataController = ChoreDataController.instance
     var goalData : GoalDataController = GoalDataController.instance
+    let choresForGoalController = ChoresForGoalTableViewController()
     
-    var selectedChoreName : String?
+    var selectedChoreName: String?
+    var validChores: [String] = Array()
     
+    @IBAction func allSwitchToggled(_ sender: Any) {
+        choresForGoalTableView.isHidden = allChoresCountSwitch.isOn
+        if !allChoresCountSwitch.isOn {
+            choresForGoalController.setValidChores(validChores: Array())
+            choresForGoalTableView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Handle the text field’s user input through delegate callbacks.
         self.goalName.delegate = self
         
-        self.activityPicker.delegate = self
-        self.activityPicker.dataSource = self
-        // Do any additional setup after loading the view.
-
+        choresForGoalController.setChores(allChores: choreData.getNames())
+        choresForGoalTableView.delegate = choresForGoalController
+        choresForGoalTableView.dataSource = choresForGoalController
+        choresForGoalTableView.isHidden = true
+        
         // Set up views if editing an existing Goal.
         if let goal = goal {
             navigationItem.title = goal.name
             goalName.text = goal.name
             pointsToAchieveGoal.text = String(goal.pointsToAchieveGoal)
             currentPoints.text = String(goal.currentPoints)
+            if (goal.pointGivingChoresArray.count == choreData.count()) {
+                allChoresCountSwitch.setOn(true, animated: false)
+                choresForGoalTableView.isHidden = true
+            } else {
+                allChoresCountSwitch.setOn(false, animated: false)
+                choresForGoalTableView.isHidden = false
+            }
+            choresForGoalController.setValidChores(validChores: goal.pointGivingChoresArray)
+            validChores = goal.pointGivingChoresArray
+            
             goalImageSelector.image = goal.photo
         }
         
@@ -68,13 +90,13 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     }
     */
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
-        if isPresentingInAddMealMode {
+        let isPresentingInAddGoalMode = presentingViewController is UINavigationController
+        if isPresentingInAddGoalMode {
             dismiss(animated: true, completion: nil)
         } else if let owningNavigationController = navigationController{
             owningNavigationController.popViewController(animated: true)
         } else {
-            fatalError("The MealViewController is not inside a navigation controller.")
+            fatalError("The GoalViewController is not inside a navigation controller.")
         }
     }
     
@@ -93,8 +115,12 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         let pointsToAchieveGoal: Int = Int(self.pointsToAchieveGoal.text ?? "") ?? 100
         let currentPoints: Int = Int(self.currentPoints.text ?? "") ?? 0
 
-        //FIXME virker kun når man selv har valgt en aktivitet
-        let choreNames = [selectedChoreName ?? ""]
+        var choreNames: [String] = Array()
+        if allChoresCountSwitch.isOn {
+            choreNames = choreData.getNames()
+        } else {
+            choreNames =  choresForGoalController.getChores()
+        }
         
         // Set the goal to be passed to ChoreTableViewController after the unwind segue.
         guard let goal : Goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: currentPoints, pointGivingChoresArray: choreNames) else {
@@ -144,13 +170,11 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         dismiss(animated: true, completion: nil)
     }
 
-    
     // MARK: UIPickerViewDataSource
     // returns the number of 'columns' to display.
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1;
     }
-    
     
     // returns the # of rows in each component..
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

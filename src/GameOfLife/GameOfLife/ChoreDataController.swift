@@ -27,6 +27,14 @@ class ChoreDataController {
         return chores[index]
     }
     
+    public func getNames() -> [String] {
+        var names = Array(repeating: "", count: chores.count)
+        for i in 0...chores.count-1 {
+            names[i] = chores[i].name
+        }
+        return names
+    }
+    
     public func delete(index : Int) {
         // Delete the row from the data source
         chores.remove(at: index)
