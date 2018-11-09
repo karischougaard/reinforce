@@ -28,9 +28,9 @@ class ChoreDataController {
     }
     
     public func getNames() -> [String] {
-        var names = Array(repeating: "", count: chores.count)
+        var names: [String] = Array()
         for i in 0...chores.count-1 {
-            names[i] = chores[i].name
+            names.append(chores[i].name)
         }
         return names
     }

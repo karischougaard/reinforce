@@ -33,10 +33,10 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     var validChores: [String] = Array()
     
     @IBAction func allSwitchToggled(_ sender: Any) {
-        choresForGoalTableView.isHidden = allChoresCountSwitch.isOn
+        //choresForGoalTableView.isHidden = allChoresCountSwitch.isOn
         if !allChoresCountSwitch.isOn {
             choresForGoalController.setValidChores(validChores: Array())
-            choresForGoalTableView.reloadData()
+            //choresForGoalTableView.reloadData()
         }
     }
 
@@ -46,10 +46,10 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         // Handle the text field’s user input through delegate callbacks.
         self.goalName.delegate = self
         
-        choresForGoalController.setChores(allChores: choreData.getNames())
+        choresForGoalController.setChores(allChoreNames: choreData.getNames())
         choresForGoalTableView.delegate = choresForGoalController
         choresForGoalTableView.dataSource = choresForGoalController
-        choresForGoalTableView.isHidden = true
+        choresForGoalTableView.isHidden = false
         
         // Set up views if editing an existing Goal.
         if let goal = goal {
@@ -59,7 +59,7 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             currentPoints.text = String(goal.currentPoints)
             if (goal.pointGivingChoresArray.count == choreData.count()) {
                 allChoresCountSwitch.setOn(true, animated: false)
-                choresForGoalTableView.isHidden = true
+                //choresForGoalTableView.isHidden = true
             } else {
                 allChoresCountSwitch.setOn(false, animated: false)
                 choresForGoalTableView.isHidden = false

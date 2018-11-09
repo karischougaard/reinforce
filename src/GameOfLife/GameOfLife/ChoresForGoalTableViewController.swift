@@ -13,10 +13,10 @@ class ChoresForGoalTableViewController: UITableViewController, ChoreCountsProtoc
     //Mark: Properties
     var allChores: [(String,Bool)] = Array()
     
-    func setChores(allChores: [String]){
-        self.allChores = Array(repeating: ("", false), count: allChores.count)
-        for i in 0...allChores.count-1 {
-            self.allChores[i] = (allChores[i], true)
+    func setChores(allChoreNames: [String]){
+        self.allChores = Array()
+        for i in 0...allChoreNames.count-1 {
+            self.allChores.append((allChoreNames[i], false))
         }
     }
 
@@ -65,12 +65,12 @@ class ChoresForGoalTableViewController: UITableViewController, ChoreCountsProtoc
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChoresForGoalTableViewCell", for: indexPath) as? ChoresForGoalTableViewCell else {
-            fatalError("The dequeued cell is not an instance of ChoresForGoalTableViewCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChoreListForGoalTableViewCell", for: indexPath) as? ChoreListForGoalTableViewCell else {
+            fatalError("The dequeued cell is not an instance of ChoreListForGoalTableViewCell")
         }
 
         cell.choreNameLabel.text = self.allChores[indexPath.row].0
-        cell.doesCountTowardsChoreSwitch.setOn(self.allChores[indexPath.row].1, animated: false)
+        cell.choreCountsSwitch.setOn(self.allChores[indexPath.row].1, animated: false)
         cell.index = indexPath.row
         cell.cellDelegate = self
         return cell
