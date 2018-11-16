@@ -30,7 +30,7 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     let choresForGoalController = ChoresForGoalTableViewController()
     
     var selectedChoreName: String?
-    var validChores: [String] = Array()
+    //var validChores: [String] = Array()
     
     @IBAction func allSwitchToggled(_ sender: Any) {
         //choresForGoalTableView.isHidden = allChoresCountSwitch.isOn
@@ -67,8 +67,6 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
                 choresForGoalTableView.isHidden = false
             }
             choresForGoalController.setValidChores(validChores: goal.pointGivingChoresArray)
-            validChores = goal.pointGivingChoresArray
-            
             goalImageSelector.image = goal.photo
         } else {
             choresForGoalController.setValidChores(validChores: choreData.getNames())

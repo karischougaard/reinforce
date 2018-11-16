@@ -23,7 +23,7 @@ class ChoreListForGoalTableViewCell: UITableViewCell {
     }
 
     @IBAction func toggleChoreCounts(_ sender: Any) {
-        //cellDelegate.choreCountsToggled(checked: choreCountsSwitch.isOn, index: index)
+        cellDelegate.choreCountsToggled(checked: choreCountsSwitch.isOn, index: index)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
