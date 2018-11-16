@@ -22,10 +22,13 @@ class ChoreListForGoalTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    @IBAction func toggleChoreCounts(_ sender: Any) {
+        //cellDelegate.choreCountsToggled(checked: choreCountsSwitch.isOn, index: index)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        //choreCountsSwitch.setOn(!choreCountsSwitch.isOn, animated: true)
     }
 
 }

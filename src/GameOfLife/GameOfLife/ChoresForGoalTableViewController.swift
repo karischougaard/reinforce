@@ -32,6 +32,7 @@ class ChoresForGoalTableViewController: UITableViewController, ChoreCountsProtoc
             }
             allChores[i].1 = isValid
         }
+        self.tableView.reloadData()
     }
 
     func getValidChores() -> [String]{

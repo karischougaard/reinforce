@@ -34,9 +34,10 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     
     @IBAction func allSwitchToggled(_ sender: Any) {
         //choresForGoalTableView.isHidden = allChoresCountSwitch.isOn
-        if !allChoresCountSwitch.isOn {
+        if allChoresCountSwitch.isOn {
+            choresForGoalController.setValidChores(validChores: choreData.getNames())
+        } else {
             choresForGoalController.setValidChores(validChores: Array())
-            //choresForGoalTableView.reloadData()
         }
     }
 
@@ -47,6 +48,7 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         self.goalName.delegate = self
         
         choresForGoalController.setChores(allChoreNames: choreData.getNames())
+        choresForGoalController.tableView = choresForGoalTableView
         choresForGoalTableView.delegate = choresForGoalController
         choresForGoalTableView.dataSource = choresForGoalController
         choresForGoalTableView.isHidden = false
@@ -68,6 +70,8 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             validChores = goal.pointGivingChoresArray
             
             goalImageSelector.image = goal.photo
+        } else {
+            choresForGoalController.setValidChores(validChores: choreData.getNames())
         }
         
         // Enable the Save button only if the text field has a valid Goal name.
@@ -210,7 +214,6 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         // Disable the Save button if the text field is empty.
         let text = goalName.text ?? ""
         saveButton.isEnabled = !text.isEmpty
-        saveButton.isEnabled = true
     }
 
 }
