@@ -46,6 +46,8 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
 
         // Handle the text field’s user input through delegate callbacks.
         self.goalName.delegate = self
+        self.pointsToAchieveGoal.delegate = self
+        self.currentPoints.delegate = self
         
         choresForGoalController.setChores(allChoreNames: choreData.getNames())
         choresForGoalController.tableView = choresForGoalTableView
@@ -142,8 +144,10 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disable the Save button while editing.
-        saveButton.isEnabled = false
+        // Disable the Save button while editing name
+        if textField == goalName {
+            saveButton.isEnabled = false
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -194,6 +198,9 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     }
     
     @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
+        // Hide the keyboard.
+        goalName.resignFirstResponder()
+        
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
         

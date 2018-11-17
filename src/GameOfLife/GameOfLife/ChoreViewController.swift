@@ -53,15 +53,16 @@ class ChoreViewController: UIViewController, UITextFieldDelegate, UIImagePickerC
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disable the Save button while editing.
-        saveButton.isEnabled = false
+        // Disable the Save button while editing name
+        if textField == nameTextField {
+            saveButton.isEnabled = false
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
         navigationItem.title = textField.text
     }
-    
     
     //MARK: UIImagePickerControllerDelegate
     
@@ -122,9 +123,6 @@ class ChoreViewController: UIViewController, UITextFieldDelegate, UIImagePickerC
     
     //MARK: Actions
     @IBAction func selectPhotoFromLibrary(_ sender: UITapGestureRecognizer) {
-        // Hide the keyboard.
-        nameTextField.resignFirstResponder()
-        
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
         
@@ -135,7 +133,6 @@ class ChoreViewController: UIViewController, UITextFieldDelegate, UIImagePickerC
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
-    
     
     //MARK: Private Methods
     private func updateSaveButtonState() {
