@@ -1,10 +1,11 @@
 Backlog
 
+* Make some kind of celebration, when a goal has been reached
+* Play katjing sound, when a point is earned
+* Allow for different number of points earned for different activities
 * Show currently allowed activity, when a goal is edited
-* Handle more than one allowed activity for at goal
 * Handle when a now goal or activity use the same name as an existing
 * Show level of achievement towards goal
-* Make some kind of celebration, when a goal has been reached
 * Editerbar eventlog
 * Deling på tværs af telefoner (m. server)
 * Avatarer
