@@ -116,7 +116,7 @@ class ChoreViewController: UIViewController, UITextFieldDelegate, UIImagePickerC
         let name = nameTextField.text ?? ""
         let worth: Float = Float(worthTextField.text ?? "") ?? 1.0
         let photo = photoImageView.image
-        let count: Int = Int(countTextField.text ?? "") ?? 0
+        let count: Float = Float(countTextField.text ?? "") ?? 0.0
 
         
         // Set the chore to be passed to ChoreTableViewController after the unwind segue.

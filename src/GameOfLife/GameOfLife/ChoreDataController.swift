@@ -42,7 +42,7 @@ class ChoreDataController {
     }
     
     public func countUp(index : Int) {
-        chores[index].count += 1
+        chores[index].count = chores[index].count + chores[index].worth
         saveChores()
     }
     

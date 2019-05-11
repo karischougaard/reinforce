@@ -15,7 +15,7 @@ class Chore : NSObject, NSCoding {
     var name: String
     var worth: Float
     var photo: UIImage?
-    var count: Int
+    var count: Float
     
     //MARK: Archiving Paths
     
@@ -33,7 +33,7 @@ class Chore : NSObject, NSCoding {
     
     //MARK: Initialization
     
-    init?(name: String, worth: Float, photo: UIImage?, count: Int) {
+    init?(name: String, worth: Float, photo: UIImage?, count: Float) {
         
         // Initialization should fail if there is no name or if the count is negative.
         
@@ -74,7 +74,7 @@ class Chore : NSObject, NSCoding {
         // Because photo is an optional property of Chore, just use conditional cast.
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         
-        let count = aDecoder.decodeInteger(forKey: PropertyKey.count)
+        let count = aDecoder.decodeFloat(forKey: PropertyKey.count)
         
         // Must call designated initializer.
         self.init(name: name, worth: worth, photo: photo, count: count)
