@@ -14,6 +14,7 @@ class ChoreViewController: UIViewController, UITextFieldDelegate, UIImagePickerC
     //MARK: Properties
     
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var worthTextField: UITextField!
     @IBOutlet weak var countTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -35,6 +36,7 @@ class ChoreViewController: UIViewController, UITextFieldDelegate, UIImagePickerC
         if let chore = chore {
             navigationItem.title = chore.name
             nameTextField.text = chore.name
+            worthTextField.text = String(chore.worth)
             countTextField.text = String(chore.count)
             photoImageView.image = chore.photo
         }
@@ -112,12 +114,13 @@ class ChoreViewController: UIViewController, UITextFieldDelegate, UIImagePickerC
         }
         
         let name = nameTextField.text ?? ""
+        let worth: Float = Float(worthTextField.text ?? "") ?? 1.0
         let photo = photoImageView.image
         let count: Int = Int(countTextField.text ?? "") ?? 0
 
         
         // Set the chore to be passed to ChoreTableViewController after the unwind segue.
-        chore = Chore(name: name, photo: photo, count: count)
+        chore = Chore(name: name, worth: worth, photo: photo, count: count)
     }
     
     

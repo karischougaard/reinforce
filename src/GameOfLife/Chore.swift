@@ -12,8 +12,8 @@ import os.log
 class Chore : NSObject, NSCoding {
     
     // MARK: Properties
-    
     var name: String
+    var worth: Float
     var photo: UIImage?
     var count: Int
     
@@ -26,13 +26,14 @@ class Chore : NSObject, NSCoding {
     
     struct PropertyKey {
         static let name = "name"
+        static let worth = "worth"
         static let photo = "photo"
         static let count = "count"
     }
     
     //MARK: Initialization
     
-    init?(name: String, photo: UIImage?, count: Int) {
+    init?(name: String, worth: Float, photo: UIImage?, count: Int) {
         
         // Initialization should fail if there is no name or if the count is negative.
         
@@ -41,13 +42,9 @@ class Chore : NSObject, NSCoding {
             return nil
         }
         
-        // The count must be 0 or more
-        guard (count >= 0) else {
-            return nil
-        }
-        
         // Initialize stored properties.
         self.name = name
+        self.worth = worth
         self.photo = photo
         self.count = count
     }
@@ -56,6 +53,7 @@ class Chore : NSObject, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: PropertyKey.name)
+        aCoder.encode(worth, forKey: PropertyKey.worth)
         aCoder.encode(photo, forKey: PropertyKey.photo)
         aCoder.encode(count, forKey: PropertyKey.count)
     }
@@ -67,12 +65,18 @@ class Chore : NSObject, NSCoding {
             return nil
         }
         
+        // If worth does not exist it is set to 1        
+        var worth = aDecoder.decodeFloat(forKey: PropertyKey.worth)
+        if (worth == 0.0) {
+            worth = 1.0
+        }
+        
         // Because photo is an optional property of Chore, just use conditional cast.
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         
         let count = aDecoder.decodeInteger(forKey: PropertyKey.count)
         
         // Must call designated initializer.
-        self.init(name: name, photo: photo, count: count)
+        self.init(name: name, worth: worth, photo: photo, count: count)
     }
 }
