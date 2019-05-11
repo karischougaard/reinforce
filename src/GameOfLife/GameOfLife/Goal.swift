@@ -15,7 +15,7 @@ class Goal : NSObject, NSCoding {
     
     var name: String
     var pointsToAchieveGoal: Int
-    var currentPoints: Int
+    var currentPoints: Float
     var pointGivingChoresArray: [String]
     var photo: UIImage?
     
@@ -36,7 +36,7 @@ class Goal : NSObject, NSCoding {
     
     //MARK: Initialization
     
-    init?(name: String, photo: UIImage?, pointsToAchieveGoal: Int, currentPoints: Int, pointGivingChoresArray: [String]) {
+    init?(name: String, photo: UIImage?, pointsToAchieveGoal: Int, currentPoints: Float, pointGivingChoresArray: [String]) {
         
         // Initialization should fail if there is no name or if the pointsToAchieveGoal is negative.
         
@@ -80,7 +80,7 @@ class Goal : NSObject, NSCoding {
         
         let pointsToAchieveGoal = aDecoder.decodeInteger(forKey: PropertyKey.pointsToAchieveGoal)
         
-        let currentPoints = aDecoder.decodeInteger(forKey: PropertyKey.currentPoints)
+        let currentPoints = aDecoder.decodeFloat(forKey: PropertyKey.currentPoints)
         
         // At least one chore is required. If we cannot decode a Chore, the initializer should fail
         guard let pointGivingChoresArray = aDecoder.decodeObject(forKey: PropertyKey.pointGivingChores) as? [String] else {

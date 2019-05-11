@@ -81,7 +81,7 @@ class ChoreTableViewController: UITableViewController {
             
             cell.nameLabel.text = goal.name
             cell.photoImageView.image = goal.photo
-            cell.countLabel.text = "\(goal.currentPoints) / \(goal.pointsToAchieveGoal)"
+            cell.countLabel.text = "\(truncateFloatToString(goal.currentPoints)) / \(goal.pointsToAchieveGoal)"
             
             return cell
         } else if section == TableSection.chores {
@@ -89,7 +89,7 @@ class ChoreTableViewController: UITableViewController {
 
             cell.nameLabel.text = chore.name
             cell.photoImageView.image = chore.photo
-            cell.countLabel.text = String(chore.count)
+            cell.countLabel.text = truncateFloatToString(chore.count)
             return cell
         }
         fatalError("The cell is in an unknown section of ChoreTableView.")
@@ -269,9 +269,12 @@ class ChoreTableViewController: UITableViewController {
     
     func countUp(indexPath: IndexPath){
         choreData.countUp(index: indexPath.row);
-        goalData.countUp(name: choreData.get(index: indexPath.row).name);
+        goalData.countUp(name: choreData.get(index: indexPath.row).name, worth: choreData.get(index: indexPath.row).worth);
         tableView.reloadSections(IndexSet(integersIn: 0...0), with: .none)
         tableView.reloadRows(at: [indexPath], with: .none)
     }
-
+    
+    func truncateFloatToString(_ float: Float) -> String {
+        return float.truncatingRemainder(dividingBy: 1.0) == 0 ? String(Int(floor(float))) : String((float*10).rounded()/10)
+    }
 }

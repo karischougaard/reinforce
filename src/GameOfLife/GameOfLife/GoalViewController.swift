@@ -117,7 +117,7 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         let name = goalName.text ?? ""
         let photo = goalImageSelector.image
         let pointsToAchieveGoal: Int = Int(self.pointsToAchieveGoal.text ?? "") ?? 100
-        let currentPoints: Int = Int(self.currentPoints.text ?? "") ?? 0
+        let currentPoints: Float = Float(self.currentPoints.text ?? "") ?? 0.0
 
         var choreNames: [String] = Array()
         if allChoresCountSwitch.isOn {
