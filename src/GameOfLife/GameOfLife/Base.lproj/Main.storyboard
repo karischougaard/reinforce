@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="663" y="-481"/>
         </scene>
-        <!--Ny opgave-->
+        <!--Ny aktivitet-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ChoreViewController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,23 +140,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-1M-RO3">
-                                <rect key="frame" x="20" y="84" width="374" height="396"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-1M-RO3">
+                                <rect key="frame" x="20" y="84" width="374" height="531"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Opgave navn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fPx-5r-0q1">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktivitetens navn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjT-fW-ftL">
+                                        <rect key="frame" x="0.0" y="0.0" width="138.66666666666666" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Navn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fPx-5r-0q1">
+                                        <rect key="frame" x="0.0" y="30.333333333333329" width="374" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Antal point" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKr-DS-4iK">
-                                        <rect key="frame" x="0.0" y="38" width="374" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point pr gang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHP-Iw-w5r">
+                                        <rect key="frame" x="0.0" y="70.333333333333343" width="106.66666666666667" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Point pr gang" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pbb-G9-z5p">
+                                        <rect key="frame" x="0.0" y="100.66666666666666" width="374" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point opnået på denne aktivitet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfi-yJ-1Nf">
+                                        <rect key="frame" x="0.0" y="140.66666666666666" width="248.33333333333334" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Point i alt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKr-DS-4iK">
+                                        <rect key="frame" x="0.0" y="171" width="374" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Ajb-7t-4rh">
-                                        <rect key="frame" x="27" y="76" width="320" height="320"/>
+                                        <rect key="frame" x="0.0" y="211" width="320" height="320"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Ajb-7t-4rh" secondAttribute="height" multiplier="1:1" id="Mjs-hz-EgU"/>
@@ -167,6 +191,7 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Pbb-G9-z5p" secondAttribute="trailing" id="01J-9Y-8Or"/>
                                     <constraint firstAttribute="trailing" secondItem="fPx-5r-0q1" secondAttribute="trailing" id="6rj-S1-7c8"/>
                                     <constraint firstAttribute="trailing" secondItem="CKr-DS-4iK" secondAttribute="trailing" id="85F-Df-7sp"/>
                                     <constraint firstItem="CKr-DS-4iK" firstAttribute="leading" secondItem="iFg-1M-RO3" secondAttribute="leading" id="wi7-8r-MKK"/>
@@ -180,7 +205,7 @@
                             <constraint firstItem="iFg-1M-RO3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rwW-zT-WIh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Ny opgave" id="GtW-PC-Kfb">
+                    <navigationItem key="navigationItem" title="Ny aktivitet" id="GtW-PC-Kfb">
                         <barButtonItem key="leftBarButtonItem" title="Fortryd" id="WXN-m5-Y8l">
                             <connections>
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="NY8-2e-JfW"/>
@@ -244,6 +269,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jl-vK-a0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1455" y="409"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RnM-Fn-w7b">
+            <objects>
+                <viewController id="fDs-PE-fbS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zxt-eq-8Qn"/>
+                        <viewControllerLayoutGuide type="bottom" id="N7x-lN-cPV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yEk-e8-Nvw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SiI-ph-LOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2417" y="691"/>
         </scene>
         <!--Nyt mål-->
         <scene sceneID="0tm-So-yVR">
@@ -309,7 +352,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <imageView contentMode="scaleToFill" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="V6X-77-YY0">
+                                            <imageView contentMode="scaleToFill" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="V6X-77-YY0">
                                                 <rect key="frame" x="226.66666666666663" y="0.0" width="147.33333333333337" height="148"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="V6X-77-YY0" secondAttribute="height" multiplier="1:1" id="mih-F8-sye"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60079F4321A6AE61004C8E86 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60079F4221A6AE61004C8E86 /* PlayViewController.swift */; };
 		600AFBAA1E9CD659005830ED /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600AFBA91E9CD659005830ED /* Chore.swift */; };
 		602B903D218C797100D6619F /* ChoreListForGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602B903C218C797100D6619F /* ChoreListForGoalTableViewCell.swift */; };
 		604E24DB1F446A93009FC06D /* GoalDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E24DA1F446A93009FC06D /* GoalDataController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		60079F4221A6AE61004C8E86 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		600AFBA91E9CD659005830ED /* Chore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Chore.swift; path = ../Chore.swift; sourceTree = "<group>"; };
 		602B903C218C797100D6619F /* ChoreListForGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreListForGoalTableViewCell.swift; sourceTree = "<group>"; };
 		604E24DA1F446A93009FC06D /* GoalDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDataController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				606AD1121F438EF200F09539 /* GoalViewController.swift */,
 				604E24DA1F446A93009FC06D /* GoalDataController.swift */,
 				60FFDE961E965123004D2BF8 /* Main.storyboard */,
+				60079F4221A6AE61004C8E86 /* PlayViewController.swift */,
 				60FFDE991E965123004D2BF8 /* Assets.xcassets */,
 				60FFDE9B1E965123004D2BF8 /* LaunchScreen.storyboard */,
 				60FFDE9E1E965123004D2BF8 /* Info.plist */,
@@ -244,6 +247,7 @@
 				600AFBAA1E9CD659005830ED /* Chore.swift in Sources */,
 				60590C001EA0B5FA00EDC008 /* ChoreTableViewCell.swift in Sources */,
 				604E24DD1F446BB7009FC06D /* Goal.swift in Sources */,
+				60079F4321A6AE61004C8E86 /* PlayViewController.swift in Sources */,
 				6054C0351F433B89005FB9A9 /* ChoreHistoryItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

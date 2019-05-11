@@ -1,5 +1,6 @@
 Backlog
 
+* If all activities counts towards a goal, new ones should also count
 * Make some kind of celebration, when a goal has been reached
 * Play katjing sound, when a point is earned
 * Allow for different number of points earned for different activities
