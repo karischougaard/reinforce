@@ -18,7 +18,7 @@
 		606AD1131F438EF200F09539 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606AD1121F438EF200F09539 /* GoalViewController.swift */; };
 		6076533F1F443FDD0010454C /* ChoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076533E1F443FDD0010454C /* ChoreDataController.swift */; };
 		60B6BBCA2142919700B66602 /* ChoresForGoalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B6BBC92142919700B66602 /* ChoresForGoalTableViewController.swift */; };
-		60B6BBCC2158F3D500B66602 /* ChoreCountsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B6BBCB2158F3D500B66602 /* ChoreCountsProtocol.swift */; };
+		60B6BBCC2158F3D500B66602 /* ChoresChangedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B6BBCB2158F3D500B66602 /* ChoresChangedProtocol.swift */; };
 		60FFDE931E965123004D2BF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFDE921E965123004D2BF8 /* AppDelegate.swift */; };
 		60FFDE951E965123004D2BF8 /* ChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FFDE941E965123004D2BF8 /* ChoreViewController.swift */; };
 		60FFDE981E965123004D2BF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60FFDE961E965123004D2BF8 /* Main.storyboard */; };
@@ -49,7 +49,7 @@
 		606AD1121F438EF200F09539 /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		6076533E1F443FDD0010454C /* ChoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoreDataController.swift; sourceTree = "<group>"; };
 		60B6BBC92142919700B66602 /* ChoresForGoalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresForGoalTableViewController.swift; sourceTree = "<group>"; };
-		60B6BBCB2158F3D500B66602 /* ChoreCountsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCountsProtocol.swift; sourceTree = "<group>"; };
+		60B6BBCB2158F3D500B66602 /* ChoresChangedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresChangedProtocol.swift; sourceTree = "<group>"; };
 		60FFDE8F1E965123004D2BF8 /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60FFDE921E965123004D2BF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60FFDE941E965123004D2BF8 /* ChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 			children = (
 				60590BFF1EA0B5FA00EDC008 /* ChoreTableViewCell.swift */,
 				60590C011EA1682400EDC008 /* ChoreTableViewController.swift */,
-				60B6BBCB2158F3D500B66602 /* ChoreCountsProtocol.swift */,
+				60B6BBCB2158F3D500B66602 /* ChoresChangedProtocol.swift */,
 				60B6BBC92142919700B66602 /* ChoresForGoalTableViewController.swift */,
 				602B903C218C797100D6619F /* ChoreListForGoalTableViewCell.swift */,
 				6076533E1F443FDD0010454C /* ChoreDataController.swift */,
@@ -235,7 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60B6BBCC2158F3D500B66602 /* ChoreCountsProtocol.swift in Sources */,
+				60B6BBCC2158F3D500B66602 /* ChoresChangedProtocol.swift in Sources */,
 				606AD1131F438EF200F09539 /* GoalViewController.swift in Sources */,
 				60FFDE951E965123004D2BF8 /* ChoreViewController.swift in Sources */,
 				60FFDE931E965123004D2BF8 /* AppDelegate.swift in Sources */,

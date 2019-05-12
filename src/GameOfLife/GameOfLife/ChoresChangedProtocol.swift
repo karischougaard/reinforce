@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ChoreCountsProtocol {
+protocol ChoresChangedProtocol {
     
     func choreCountsToggled(checked: Bool, index: Int)
     

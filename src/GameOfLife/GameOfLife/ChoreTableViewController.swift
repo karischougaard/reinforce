@@ -197,6 +197,10 @@ class ChoreTableViewController: UITableViewController {
                 let newIndexPath = IndexPath(row: choreData.count()-1, section: 1)
 
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+                
+                // Redraw Goals to add new chore to Chores for that goal
+                // TODO
+                
             }
         } else if let sourceViewController = sender.source as? GoalViewController, let goal = sourceViewController.goal {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -273,7 +277,7 @@ class ChoreTableViewController: UITableViewController {
         tableView.reloadSections(IndexSet(integersIn: 0...0), with: .none)
         tableView.reloadRows(at: [indexPath], with: .none)
     }
-    
+        
     func truncateFloatToString(_ float: Float) -> String {
         return float.truncatingRemainder(dividingBy: 1.0) == 0 ? String(Int(floor(float))) : String((float*10).rounded()/10)
     }

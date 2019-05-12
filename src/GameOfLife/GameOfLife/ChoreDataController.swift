@@ -59,7 +59,7 @@ class ChoreDataController {
     // MARK: private methods
 
     private func loadData(){
-    // Load any saved meals, otherwise load sample data.
+    // Load any saved chores, otherwise load sample data.
         if let savedChores = loadChores() {
             chores += savedChores
         } else {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChoresForGoalTableViewController: UITableViewController, ChoreCountsProtocol  {
+class ChoresForGoalTableViewController: UITableViewController, ChoresChangedProtocol  {
 
     //Mark: Properties
     var allChores: [(String,Bool)] = Array()
@@ -61,7 +61,7 @@ class ChoresForGoalTableViewController: UITableViewController, ChoreCountsProtoc
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allChores.count-1
+        return allChores.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,12 +87,15 @@ class ChoresForGoalTableViewController: UITableViewController, ChoreCountsProtoc
         return chores
     }
     
-    //MARK: ChoresValidForGoalDelegate
+    //MARK: ChoresChangedDelegate
     public func choreCountsToggled(checked: Bool, index: Int) {
         allChores[index].1 = checked
     }
 
-
+    func choreAdded(){
+        self.tableView.reloadData()
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

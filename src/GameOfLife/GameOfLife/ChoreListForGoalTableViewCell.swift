@@ -15,7 +15,7 @@ class ChoreListForGoalTableViewCell: UITableViewCell {
     @IBOutlet weak var choreNameLabel: UILabel!
     
     var index: Int!
-    var cellDelegate: ChoreCountsProtocol!
+    var cellDelegate: ChoresChangedProtocol!
     
     override func awakeFromNib() {
         super.awakeFromNib()
