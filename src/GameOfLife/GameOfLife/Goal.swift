@@ -16,6 +16,7 @@ class Goal : NSObject, NSCoding {
     var name: String
     var pointsToAchieveGoal: Int
     var currentPoints: Float
+    var allChoresCount: Bool
     var pointGivingChoresArray: [String]
     var photo: UIImage?
     
@@ -31,12 +32,13 @@ class Goal : NSObject, NSCoding {
         static let photo = "photo"
         static let pointsToAchieveGoal = "pointsToAchieveGoal"
         static let currentPoints = "currentPoints"
+        static let allChoresCount = "allCounts"
         static let pointGivingChores = "pointGivingChores"
     }
     
     //MARK: Initialization
     
-    init?(name: String, photo: UIImage?, pointsToAchieveGoal: Int, currentPoints: Float, pointGivingChoresArray: [String]) {
+    init?(name: String, photo: UIImage?, pointsToAchieveGoal: Int, currentPoints: Float, allChoresCount: Bool, pointGivingChoresArray: [String]) {
         
         // Initialization should fail if there is no name or if the pointsToAchieveGoal is negative.
         
@@ -55,6 +57,7 @@ class Goal : NSObject, NSCoding {
         self.photo = photo
         self.pointsToAchieveGoal = pointsToAchieveGoal
         self.currentPoints = currentPoints
+        self.allChoresCount = allChoresCount
         self.pointGivingChoresArray = pointGivingChoresArray
     }
     
@@ -65,6 +68,7 @@ class Goal : NSObject, NSCoding {
         aCoder.encode(photo, forKey: PropertyKey.photo)
         aCoder.encode(pointsToAchieveGoal, forKey: PropertyKey.pointsToAchieveGoal)
         aCoder.encode(currentPoints, forKey: PropertyKey.currentPoints)
+        aCoder.encode(allChoresCount, forKey: PropertyKey.allChoresCount)
         aCoder.encode(pointGivingChoresArray, forKey: PropertyKey.pointGivingChores)
     }
     
@@ -82,6 +86,8 @@ class Goal : NSObject, NSCoding {
         
         let currentPoints = aDecoder.decodeFloat(forKey: PropertyKey.currentPoints)
         
+        let allChoresCount = aDecoder.decodeBool(forKey: PropertyKey.allChoresCount)
+        
         // At least one chore is required. If we cannot decode a Chore, the initializer should fail
         guard let pointGivingChoresArray = aDecoder.decodeObject(forKey: PropertyKey.pointGivingChores) as? [String] else {
             os_log("Unable to decode the array of Chores for a Goal object.", log: OSLog.default, type: .debug)
@@ -89,6 +95,6 @@ class Goal : NSObject, NSCoding {
         }
 
         // Must call designated initializer.
-        self.init(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: currentPoints, pointGivingChoresArray: pointGivingChoresArray)
+        self.init(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: currentPoints, allChoresCount: allChoresCount, pointGivingChoresArray: pointGivingChoresArray)
     }
 }

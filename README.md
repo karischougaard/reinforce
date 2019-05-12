@@ -1,10 +1,9 @@
 Backlog
 
 * A chore should not be able to have its name changed, as the name is used as identifier
-* If all activities counts towards a goal, new ones should also count
+* Handle when a new goal or activity use the same name as an existing
 * Make some kind of celebration, when a goal has been reached
 * Play katjing sound, when a point is earned
-* Handle when a new goal or activity use the same name as an existing
 * Editerbar eventlog
 * Deling på tværs af telefoner (m. server)
 * Avatarer
@@ -27,4 +26,5 @@ Done:
 * Add all aktiviteter til mål (så alt hvad man gør kan give point til bestemt mål)
 * Show level of achievement towards goal
 * Fix that deleting all activites except one, means no activities are written in the list for a chore
+* If all activities counts towards a goal, new ones should also count
 

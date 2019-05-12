@@ -29,7 +29,10 @@ class GoalDataController {
     
     public func countUp(name: String, worth: Float){
         for goal in goals {
-            if goal.pointGivingChoresArray.contains(name) {
+            if goal.allChoresCount {
+                goal.currentPoints = goal.currentPoints + worth
+                saveGoals()
+            } else if goal.pointGivingChoresArray.contains(name) {
                 goal.currentPoints = goal.currentPoints + worth
                 saveGoals()
             }

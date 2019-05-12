@@ -91,9 +91,11 @@ class ChoresForGoalTableViewController: UITableViewController, ChoresChangedProt
     public func choreCountsToggled(checked: Bool, index: Int) {
         allChores[index].1 = checked
     }
-
-    func choreAdded(){
-        self.tableView.reloadData()
+    
+    public func allChoresCountsToggled(checked: Bool) {
+        for i in 0...allChores.count-1 {
+            allChores[i].1 = checked
+        }
     }
     
     /*

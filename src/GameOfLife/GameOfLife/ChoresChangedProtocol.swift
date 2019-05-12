@@ -12,4 +12,5 @@ protocol ChoresChangedProtocol {
     
     func choreCountsToggled(checked: Bool, index: Int)
     
+    func allChoresCountsToggled(checked: Bool)
 }

@@ -53,7 +53,6 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         choresForGoalController.tableView = choresForGoalTableView
         choresForGoalTableView.delegate = choresForGoalController
         choresForGoalTableView.dataSource = choresForGoalController
-        choresForGoalTableView.isHidden = false
         
         // Set up views if editing an existing Goal.
         if let goal = goal {
@@ -61,14 +60,13 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             goalName.text = goal.name
             pointsToAchieveGoal.text = String(goal.pointsToAchieveGoal)
             currentPoints.text = String(goal.currentPoints)
-            if (goal.pointGivingChoresArray.count == choreData.count()) {
+            if (goal.allChoresCount) {
                 allChoresCountSwitch.setOn(true, animated: false)
-                //choresForGoalTableView.isHidden = true
+                choresForGoalController.setValidChores(validChores: choreData.getNames())
             } else {
                 allChoresCountSwitch.setOn(false, animated: false)
-                choresForGoalTableView.isHidden = false
+                choresForGoalController.setValidChores(validChores: goal.pointGivingChoresArray)
             }
-            choresForGoalController.setValidChores(validChores: goal.pointGivingChoresArray)
             goalImageSelector.image = goal.photo
         } else {
             choresForGoalController.setValidChores(validChores: choreData.getNames())
@@ -118,16 +116,17 @@ class GoalViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         let photo = goalImageSelector.image
         let pointsToAchieveGoal: Int = Int(self.pointsToAchieveGoal.text ?? "") ?? 100
         let currentPoints: Float = Float(self.currentPoints.text ?? "") ?? 0.0
-
+        let allChoresCount = allChoresCountSwitch.isOn
         var choreNames: [String] = Array()
         if allChoresCountSwitch.isOn {
-            choreNames = choreData.getNames()
+            choreNames = Array()
         } else {
             choreNames =  choresForGoalController.getChores()
         }
         
         // Set the goal to be passed to ChoreTableViewController after the unwind segue.
-        guard let goal : Goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: currentPoints, pointGivingChoresArray: choreNames) else {
+        guard let goal : Goal = Goal(name: name, photo: photo, pointsToAchieveGoal: pointsToAchieveGoal, currentPoints: currentPoints,
+                                     allChoresCount: allChoresCount, pointGivingChoresArray: choreNames) else {
             os_log("Error creating goal", log: OSLog.default, type: .debug)
             return
         }
